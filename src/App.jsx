@@ -24,14 +24,14 @@ export default function App() {
         zIndex: -1,
       }}>
         <Dither
-          waveColor={[0.15, 0.15, 0.15]}
+          waveColor={[0.4, 0.4, 0.4]}
           waveSpeed={0.04}
           waveFrequency={3}
-          waveAmplitude={0.3}
+          waveAmplitude={0.4}
           colorNum={4}
-          pixelSize={2}
+          pixelSize={3}
           enableMouseInteraction={true}
-          mouseRadius={1}
+          mouseRadius={1.2}
         />
       </div>
 
