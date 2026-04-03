@@ -3,6 +3,23 @@ import PROJECTS from '../../data/projects';
 import { useSlider } from '../../hooks/useSlider';
 import { useSectionObserver } from '../../hooks/useSectionObserver';
 
+function ImagePlaceholder() {
+  return (
+    <div className="project-card-image project-card-image--placeholder">
+      <svg
+        viewBox="0 0 200 140"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <rect width="200" height="140" rx="8" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="6 4" opacity="0.3" />
+        <text x="100" y="58" textAnchor="middle" fontSize="28" fill="currentColor" opacity="0.2">{'</>'}</text>
+        <text x="100" y="85" textAnchor="middle" fontSize="11" fill="currentColor" opacity="0.4" letterSpacing="2" fontFamily="monospace">BIENTÔT</text>
+        <text x="100" y="102" textAnchor="middle" fontSize="11" fill="currentColor" opacity="0.4" letterSpacing="2" fontFamily="monospace">DISPONIBLE</text>
+      </svg>
+    </div>
+  );
+}
+
 export default function ProjectsSection({ onVisible }) {
   const sectionRef = useSectionObserver(onVisible);
   const { current, goTo, prev, next } = useSlider(PROJECTS.length);
@@ -48,7 +65,7 @@ export default function ProjectsSection({ onVisible }) {
             onMouseLeave={() => { isDragging.current = false; }}
           >
             {PROJECTS.map((project) => (
-              <div key={project.id} className={`project-card${project.image ? ' project-card--with-image' : ''}`}>
+              <div key={project.id} className="project-card project-card--with-image">
                 <div className="project-card-content">
                   <div className="project-number">{project.number}</div>
                   <div className="project-tech">{project.tech}</div>
@@ -64,7 +81,7 @@ export default function ProjectsSection({ onVisible }) {
                   </a>
                 </div>
 
-                {project.image && (
+                {project.image ? (
                   <div className="project-card-image">
                     <img
                       src={project.image}
@@ -72,6 +89,8 @@ export default function ProjectsSection({ onVisible }) {
                       loading="lazy"
                     />
                   </div>
+                ) : (
+                  <ImagePlaceholder />
                 )}
               </div>
             ))}
