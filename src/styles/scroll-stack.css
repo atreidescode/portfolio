@@ -34,7 +34,6 @@
   transform: translateY(0) scale(1);
 }
 
-/* Contenu interne des cartes */
 .ss-card-number {
   font-size: 0.72rem;
   letter-spacing: 0.2em;
