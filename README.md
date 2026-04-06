@@ -1,7 +1,5 @@
 # Portfolio React
 
-Version React + Vite du portfolio de **Ilias Cherrat**.
-
 ## Stack
 
 - **React 18** — composants fonctionnels + hooks
