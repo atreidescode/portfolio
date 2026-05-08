@@ -1,12 +1,12 @@
 import './navbar.css';
 
-export default function Navbar() {
+export default function Navbar({ activeSection }) {
   const navLinks = [
-    { name: 'Accueil', href: '#hero' },
-    { name: 'Projets', href: '#projects' },
-    { name: 'Compétences', href: '#skills' },
-    { name: 'Intérêts', href: '#interests' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Accueil', href: '#hero', id: 'hero' },
+    { name: 'Projets', href: '#projects', id: 'projects' },
+    { name: 'Compétences', href: '#skills', id: 'skills' },
+    { name: 'Intérêts', href: '#interests', id: 'interests' },
+    { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 
   return (
@@ -14,7 +14,10 @@ export default function Navbar() {
       <ul className="nav-links">
         {navLinks.map((link) => (
           <li key={link.name}>
-            <a href={link.href} className="nav-link">
+            <a 
+              href={link.href} 
+              className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
+            >
               {link.name}
             </a>
           </li>

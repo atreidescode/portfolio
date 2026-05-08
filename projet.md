@@ -29,7 +29,9 @@ Ce projet est un portfolio interactif développé avec **React** et **Vite**, me
 - Ajout d'une barre de navigation (`Navbar`) simple pour accéder aux sections.
 - Standardisation des IDs des sections (`#hero`, `#projects`, `#stack`, `#interests`, `#contact`) pour assurer le bon fonctionnement de la navigation.
 - Intégration de la section **Stack** dans la structure principale de l'application.
-- Refonte de la section **Centres d'intérêt** : suppression de la galerie interactive `InfiniteMenu` lors du clic sur les emojis pour simplifier l'expérience utilisateur.
+- Refonte de la section **Centres d'intérêt** : passage à un layout horizontal (Split) Texte/Image et suppression des emojis pour un design plus épuré.
+- Nettoyage de la section **Projets** : suppression des placeholders d'images pour simplifier l'interface.
+- Amélioration de la **Navbar** : passage en pleine largeur (Top Bar) et intégration de la surbrillance dynamique de la section active via un `IntersectionObserver`.
 
 ---
 *Dernière mise à jour : 08/05/2026*

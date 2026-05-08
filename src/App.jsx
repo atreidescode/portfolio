@@ -11,10 +11,12 @@ import ScrollArrow     from './components/widgets/ScrollArrow';
 import Dither          from './components/backgrounds/Dither';
 import { useRain }     from './hooks/useRain';
 import { useTerminal } from './hooks/useTerminal';
+import { useActiveSection } from './hooks/useActiveSection';
 
 export default function App() {
   const { rainEnabled, toggleRain }                    = useRain();
   const { text, visible, showTerminal, closeTerminal } = useTerminal();
+  const activeSection = useActiveSection(['hero', 'projects', 'skills', 'interests', 'contact']);
 
   return (
     <>
@@ -40,7 +42,7 @@ export default function App() {
       <RainCanvas rainEnabled={rainEnabled} />
 
       {/* Widgets flottants */}
-      <Navbar />
+      <Navbar activeSection={activeSection} />
       <EyeButton rainEnabled={rainEnabled} onToggle={toggleRain} />
       <Terminal  text={text} visible={visible} onClose={closeTerminal} />
       <ScrollArrow />
