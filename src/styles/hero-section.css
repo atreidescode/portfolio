@@ -11,7 +11,7 @@
     align-items: center;
     text-align: center;
     color: white;
-    pointer-events: none;
+    pointer-events: auto; /* Changed from none to auto */
     padding: 0 10px;
 }
 

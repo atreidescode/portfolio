@@ -4,10 +4,8 @@
  * Le typage est géré dans useTerminal, ce composant est purement présentatif.
  */
 export default function Terminal({ text, visible, onClose }) {
-  if (!visible) return null;
-
   return (
-    <div id="terminal" className="terminal visible">
+    <div id="terminal" className={`terminal ${visible ? 'visible' : ''}`}>
       <div className="terminal-header">
         <span className="terminal-title">Command Prompt</span>
         <span className="terminal-buttons">
