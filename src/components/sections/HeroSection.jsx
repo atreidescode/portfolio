@@ -13,17 +13,17 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <div id="main-content" className="content">
+    <div id="hero" className="content">
       <h1 id="title-text">
         <TextType
-          text="Ilias Cherrat"
+          text="ILIAS CHERRAT"
           typingSpeed={110}
           cursorChar="|"
           cursorBlink={true}
         />
       </h1>
       <p id="glass-box">
-        Développeur | Python Specialist | Automation Engineer
+        Développeur Full Stack (React / Node.js) | En recherche d'alternance
       </p>
     </div>
   );

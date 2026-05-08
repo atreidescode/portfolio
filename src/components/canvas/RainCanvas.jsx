@@ -88,11 +88,11 @@ export default function RainCanvas({ rainEnabled }) {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx    = canvas.getContext('2d');
-    const SPAWN_RATE = 0.06;
+    const SPAWN_RATE = 0.015; // Divisé par 4 pour la subtilité
 
     let animId;
     let lastTime      = Date.now();
-    let fontSize      = window.innerWidth < 600 ? 12 : 16;
+    let fontSize      = window.innerWidth < 600 ? 10 : 14; // Un peu plus petit
     let columns       = Math.floor(window.innerWidth / fontSize);
     let diagonalDrops = [];
     let particles     = [];
@@ -100,7 +100,7 @@ export default function RainCanvas({ rainEnabled }) {
     function initCanvas() {
       canvas.width  = window.innerWidth;
       canvas.height = window.innerHeight;
-      fontSize      = window.innerWidth < 600 ? 12 : 16;
+      fontSize      = window.innerWidth < 600 ? 10 : 14;
       const newCols = Math.floor(canvas.width / fontSize);
       if (Math.abs(newCols - columns) > 2) columns = newCols;
     }
@@ -126,8 +126,14 @@ export default function RainCanvas({ rainEnabled }) {
 
         for (let i = diagonalDrops.length - 1; i >= 0; i--) {
           const d = diagonalDrops[i];
+          d.speed = 100 + Math.random() * 50; // Vitesse réduite de moitié
           d.update(dt);
-          d.draw(ctx);
+          
+          // Dessin ultra subtil
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.15)'; // Opacité réduite
+          ctx.font      = d.font;
+          ctx.fillText(d.text, d.x, d.y);
+
           if (checkLetterCollision(d, particles)) {
             diagonalDrops.splice(i, 1);
             continue;

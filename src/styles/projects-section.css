@@ -5,7 +5,7 @@
     align-items: center;
     gap: 16px;
     width: 100%;
-    max-width: 780px;
+    max-width: 800px; /* Slightly wider since no image side */
 }
 
 .slider-wrapper {
@@ -25,76 +25,22 @@
     background: rgba(0, 0, 0, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 12px;
-    padding: 40px;
+    padding: 50px; /* More padding for a cleaner look */
     position: relative;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 0;
-    min-height: 300px;
-    /* clip only left/bottom, allow top/right overflow for image */
-    clip-path: none;
+    justify-content: center;
+    min-height: 350px;
     overflow: hidden;
-}
-
-/* Layout avec image */
-.project-card--with-image {
-    display: grid;
-    grid-template-columns: 1fr 200px;
-    gap: 0;
-    align-items: center;
-    overflow: visible;
-}
-
-/* On remet le clip sur le fond seulement via pseudo */
-.project-card--with-image::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 12px;
-    pointer-events: none;
-    z-index: 0;
+    backdrop-filter: blur(12px);
 }
 
 .project-card-content {
     display: flex;
     flex-direction: column;
-    min-width: 0;
     position: relative;
     z-index: 1;
-}
-
-.project-card-image {
-    position: relative;
-    z-index: 2;
-    width: 200px;
-    aspect-ratio: 3 / 4;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0,0,0,0.4);
-    transform: rotate(2deg) translateY(-30px);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    align-self: center;
-    justify-self: center;
-}
-
-.project-card--with-image:hover .project-card-image {
-    transform: rotate(0deg) translateY(-30px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
-}
-
-.project-card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-}
-
-.project-card--with-image:hover .project-card-image img {
-    opacity: 1;
 }
 
 .project-card::before {
@@ -110,90 +56,81 @@
 
 .project-card:hover::before { left: 100%; }
 
-.project-number      { font-size: 3rem; font-weight: bold; opacity: 0.3; margin-bottom: 10px; color: rgba(255,255,255,0.5); }
-.project-tech        { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.6); margin-bottom: 10px; }
-.project-title       { font-size: 1.5rem; font-weight: bold; margin-bottom: 15px; color: rgba(255,255,255,0.95); }
-.project-description { font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.85); margin-bottom: 25px; }
+.project-number      { font-size: 3.5rem; font-weight: bold; opacity: 0.2; margin-bottom: 10px; color: rgba(255,255,255,0.5); font-family: var(--font-mono); }
+.project-tech        { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: var(--primary-green); margin-bottom: 15px; opacity: 0.8; }
+.project-title       { font-size: 1.8rem; font-weight: bold; margin-bottom: 20px; color: #fff; letter-spacing: -0.5px; }
+.project-description { font-size: 1rem; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 30px; max-width: 600px; }
 
 .project-link {
     display: inline-block;
-    padding: 8px 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: rgba(255, 255, 255, 0.9);
+    padding: 10px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
     text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.85rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: var(--font-mono);
     transition: all 0.3s ease;
-    margin-top: auto;
     align-self: flex-start;
 }
 
 .project-link:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.5);
+    transform: translateX(5px);
 }
 
 /* Flèches */
 .slider-btn {
     flex-shrink: 0;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: rgba(255, 255, 255, 1);
-    width: 48px;
-    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     font-size: 1.8rem;
-    line-height: 1;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
 }
 
 .slider-btn:hover {
-    background: rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.6);
 }
 
 /* Points de navigation */
 .slider-dots {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .slider-dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.15);
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    padding: 0;
 }
 
 .slider-dot.active {
-    background: rgba(255, 255, 255, 0.9);
-    transform: scale(1.3);
+    background: #fff;
+    transform: scale(1.2);
 }
 
 @media (max-width: 768px) {
     .slider-outer { gap: 10px; }
-    .slider-btn   { width: 38px; height: 38px; font-size: 1.4rem; }
-    .project-card { padding: 25px; }
-    .project-card--with-image {
-        grid-template-columns: 1fr;
-    }
-    .project-card-image {
-        width: 140px;
-        transform: rotate(2deg) translateY(0);
-        margin: 0 auto 20px;
-    }
+    .slider-btn   { width: 40px; height: 40px; font-size: 1.5rem; }
+    .project-card { padding: 30px; min-height: 300px; }
+    .project-title { font-size: 1.5rem; }
+    .project-description { font-size: 0.9rem; }
 }

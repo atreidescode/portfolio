@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* Règles fondamentales : marges, font, couleur de fond global */
 
 *, *::before, *::after { box-sizing: border-box; }

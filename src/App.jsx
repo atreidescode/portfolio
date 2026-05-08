@@ -1,7 +1,8 @@
+import Navbar        from './components/ui/Navbar';
 import RainCanvas      from './components/canvas/RainCanvas';
 import HeroSection     from './components/sections/HeroSection';
-import StackSection    from './components/sections/StackSection';
 import ProjectsSection from './components/sections/ProjectsSection';
+import SkillsSection   from './components/sections/SkillsSection';
 import InterestsSection from './components/sections/InterestsSection';
 import ContactSection  from './components/sections/ContactSection';
 import Terminal        from './components/widgets/Terminal';
@@ -17,7 +18,7 @@ export default function App() {
 
   return (
     <>
-      {/* Background Dither (fixed, plein écran, derrière tout) */}
+      {/* Background Dither */}
       <div style={{
         position: 'fixed',
         inset: 0,
@@ -39,6 +40,7 @@ export default function App() {
       <RainCanvas rainEnabled={rainEnabled} />
 
       {/* Widgets flottants */}
+      <Navbar />
       <EyeButton rainEnabled={rainEnabled} onToggle={toggleRain} />
       <Terminal  text={text} visible={visible} onClose={closeTerminal} />
       <ScrollArrow />
@@ -46,8 +48,8 @@ export default function App() {
       {/* Contenu principal */}
       <main>
         <HeroSection />
-        <StackSection      onVisible={showTerminal} />
         <ProjectsSection   onVisible={showTerminal} />
+        <SkillsSection     onVisible={showTerminal} />
         <InterestsSection  onVisible={showTerminal} />
         <ContactSection    onVisible={showTerminal} />
       </main>
